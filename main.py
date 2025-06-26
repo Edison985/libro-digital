@@ -9,18 +9,25 @@ from app.models.usuario.modelo_rol import Rol
 
 from app.routers import usuario, autenticacion, pago, autor, categoria, editorial, webhook, libro
 
-app = FastAPI()
+
+app = FastAPI(
+    title="Sistema Mixera",
+    docs_url="/api/docs",              # Swagger UI
+    redoc_url="/api/redoc",            # Documentación alternativa
+    openapi_url="/api/openapi.json"    # Esquema OpenAPI
+)
+
 
 def crear_tablas():
     SQLModel.metadata.create_all(engine)
 
-crear_tablas() 
+crear_tablas()
 
-app.include_router(usuario.router)
-app.include_router(autenticacion.router)
-app.include_router(pago.router)
-app.include_router(autor.router)
-app.include_router(categoria.router)
-app.include_router(editorial.router)
-app.include_router(webhook.router)
-app.include_router(libro.router)
+app.include_router(usuario.router, prefix="/api")
+app.include_router(autenticacion.router, prefix="/api")
+app.include_router(pago.router, prefix="/api")
+app.include_router(autor.router, prefix="/api")
+app.include_router(categoria.router, prefix="/api")
+app.include_router(editorial.router, prefix="/api")
+app.include_router(webhook.router, prefix="/api")
+app.include_router(libro.router, prefix="/api")
