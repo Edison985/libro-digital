@@ -5,9 +5,16 @@ from sqlmodel import SQLModel
 from app.database.database import engine
 from app.models.usuario.modelo_usuario import Usuario
 from app.models.usuario.modelo_rol import Rol
+from app.models.libro.modelo_libro import Libro, LibroCreate
+from app.models.libro.modelo_editorial import Editorial
+from app.models.libro.modelo_autor import Autor
+from app.models.libro.modelo_categoria import Categoria
+from app.models.libro.modelo_librocategoria import LibroCategoria
+from app.models.libro.modelo_libroautor import LibroAutor
 
 
-from app.routers import usuario, autenticacion, pago, autor, categoria, editorial, webhook, libro
+
+from app.routers import usuario, autenticacion, pago, autor, categoria, editorial, libro
 
 
 app = FastAPI(
@@ -29,5 +36,4 @@ app.include_router(pago.router, prefix="/api")
 app.include_router(autor.router, prefix="/api")
 app.include_router(categoria.router, prefix="/api")
 app.include_router(editorial.router, prefix="/api")
-app.include_router(webhook.router, prefix="/api")
 app.include_router(libro.router, prefix="/api")

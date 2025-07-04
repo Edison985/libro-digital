@@ -1,5 +1,5 @@
 
-from sqlmodel import SQLModel, Field
+from sqlmodel import SQLModel, Field, Relationship
 from typing import Optional
 
 
@@ -9,21 +9,21 @@ class Autor(SQLModel, table=True):
     aut_nombre: str = Field(max_length=100)
     aut_biografia: Optional[str]
 
-    LibroAutor: Optional["LibroAutor"] =  Relationship(back_populates="Autor")
+    libro_autor: Optional["LibroAutor"] =  Relationship(back_populates="autor")
 
 
 class AutorCreate(SQLModel):
     aut_nombre: str
     aut_biografia: Optional[str] = None
-    class Config:
-        orm_mode = True
+    
+    model_config = {"from_attributes": True}
 
 
 class AutorUpdate(SQLModel):
     aut_nombre: Optional[str] = None
     aut_biografia: Optional[str] = None
-    class Config:
-        orm_mode = True
+    
+    model_config = {"from_attributes": True}
 
 
 class AutorResponse(SQLModel):
@@ -31,5 +31,4 @@ class AutorResponse(SQLModel):
     aut_nombre: str
     aut_biografia: Optional[str] = None
 
-    class Config:
-        orm_mode = True
+    model_config = {"from_attributes": True}

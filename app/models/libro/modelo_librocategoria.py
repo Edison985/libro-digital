@@ -10,5 +10,5 @@ class LibroCategoria(SQLModel, table=True):
     lcat_idlibro: Optional[int] = Field(default=None, foreign_key="libro.lib_id")
     lcat_idcategoria: Optional[int] = Field(default=None, foreign_key="categoria.cat_id")
 
-    Categroria: Optional["Categoria"] = Relationship(back_populates="LibroCategoria")
-    Libro: Optional["Libro"] = Relationship(back_populates="LibroCategoria")
+    categoria: Optional["Categoria"] = Relationship(back_populates="libro_categoria")
+    libro: Optional["Libro"] = Relationship(back_populates="libro_categoria")

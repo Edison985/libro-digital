@@ -9,13 +9,13 @@ router = APIRouter(prefix="/editorial", tags=["Editorial"])
 
 
 @router.get("/", response_model=List[Editorial])
-def listar(session: Session = Depends(get_session)):
+def listar_editoriales(session: Session = Depends(get_session)):
     return EditorialService(session).listar_editoriales()
 
 @router.post("/", response_model=Editorial, status_code=201)
-def crear(data: EditorialCreate, session: Session = Depends(get_session)):
+def crear_editorial(data: EditorialCreate, session: Session = Depends(get_session)):
     return EditorialService(session).crear_editorial(data)
 
 @router.put("/{edi_id}", response_model=Editorial)
-def actualizar(edi_id: int, data: EditorialUpdate, session: Session = Depends(get_session)):
+def actualizar_editorial(edi_id: int, data: EditorialUpdate, session: Session = Depends(get_session)):
     return EditorialService(session).actualizar_editorial(edi_id, data)

@@ -4,8 +4,8 @@ from app.services.servicio_pago import crear_preferencia_pago
 
 router = APIRouter(prefix="/pago", tags=["Pago"])
 
-@router.get("/crear", response_model=dict)
-def generar_link_pago(
+@router.get("/", response_model=dict)
+def generar_enlace_pago(
     nombre: str = Query("La carrera de la muerte"),
     precio: float = Query(5000.0),
     cantidad: int = Query(1)
