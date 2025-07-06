@@ -7,7 +7,7 @@ class Editorial(SQLModel, table=True):
     edi_nombre: str = Field(max_length=100)
     edi_biografia: Optional[str]
 
-    libro: list["Libro"] = Relationship(back_populates="editorial")
+    libro: Optional["Libro"] = Relationship(back_populates="editorial")
 
 class EditorialCreate(SQLModel):
     edi_nombre: str
