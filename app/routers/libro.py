@@ -3,6 +3,7 @@ from sqlalchemy.orm import Session
 from app.services.servicio_libro import LibroService
 from app.models.libro.modelo_libro import LibroCreate
 from app.database.database import get_session
+from typing import Optional
 
 router = APIRouter(prefix="/libro", tags=["Libro"])
 
@@ -16,7 +17,7 @@ class LibroCreateForm:
         lib_descripcion: str = Form(...),
         lib_fecha: str = Form(...),
         lib_precio: float = Form(...),
-        lib_url: str = Form(...),
+        lib_url: Optional[str] = Form(None),
         lib_ideditorial: int = Form(...),
         lib_estado: bool = Form(...)
     ):
