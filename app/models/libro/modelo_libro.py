@@ -20,6 +20,8 @@ class Libro(SQLModel, table=True):
     libro_autor: Optional["LibroAutor"] = Relationship(back_populates="libro")
     
 
+
+
 class LibroCreate(SQLModel):
     lib_titulo: str
     lib_descripcion: Optional[str] = None

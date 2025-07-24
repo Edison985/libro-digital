@@ -11,8 +11,10 @@ class LibroService:
     def __init__(self, session):
         self.session = session
 
-  
+    def listar_libros(self) -> list[Libro]:
+        return self.session.query(Libro).all()
 
+  
     def crear_libro(self, file, data: LibroCreate) -> Libro:
         if not file.filename.lower().endswith(".pdf"):
             return {"error": "Solo se permiten archivos PDF"}
